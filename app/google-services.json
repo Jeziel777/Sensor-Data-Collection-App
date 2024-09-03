@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "774061674593",
+    "project_id": "paveanalytics-95c79",
+    "storage_bucket": "paveanalytics-95c79.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:774061674593:android:405af09a774461300d9a20",
+        "android_client_info": {
+          "package_name": "com.example.pav_analytics"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIfGmvMb-_CzTBae0DKrdLt0YECqdWNJ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
