@@ -25,31 +25,39 @@ object MediaFileStorage {
     }
 
     private fun mediaFileToString(mediaFile: MediaFile): String {
-        val baseString = "${mediaFile.getFileName()}$DELIMITER${mediaFile.getFileState()}"
-        return if (mediaFile is PictureFile) {
-            "$baseString$DELIMITER${mediaFile.getVisualStress() ?: ""}"
-        } else {
-            baseString
+        return when (mediaFile) {
+            is PictureFile -> {
+                val visualDistress = mediaFile.getVisualStress()?.name ?: ""
+                val gpsLocation = mediaFile.getGpsLocation() ?: ""
+                "PictureFile|${mediaFile.getFileName()}|${mediaFile.getFileState()}|$visualDistress|$gpsLocation"
+            }
+            is VideoFile -> {
+                "VideoFile|${mediaFile.getFileName()}|${mediaFile.getFileState()}"
+            }
+            else -> ""
         }
     }
 
+
     private fun stringToMediaFile(data: String): MediaFile? {
-        val parts = data.split(DELIMITER)
-        return if (parts.size >= 2) {
-            val fileName = parts[0]
-            val fileState = FileState.valueOf(parts[1])
-            return when {
-                isPictureFile(fileName) -> {
-                    val visualDistress = if (parts.size > 2) VisualDistress.valueOf(parts[2]) else null
-                    PictureFile(fileName, fileState, visualDistress)
-                }
-                fileName.endsWith(".mp4", ignoreCase = true) -> VideoFile(fileName, fileState)
-                else -> null
+        val parts = data.split("|")
+        return when (parts[0]) {
+            "PictureFile" -> {
+                val fileName = parts[1]
+                val fileState = FileState.valueOf(parts[2])
+                val visualDistress = if (parts[3].isNotEmpty()) VisualDistress.valueOf(parts[3]) else null
+                val gpsLocation = if (parts[4].isNotEmpty()) parts[4] else null
+                PictureFile(fileName, fileState, visualDistress, gpsLocation)
             }
-        } else {
-            null
+            "VideoFile" -> {
+                val fileName = parts[1]
+                val fileState = FileState.valueOf(parts[2])
+                VideoFile(fileName, fileState)
+            }
+            else -> null
         }
     }
+
 
     fun saveMediaFiles(context: Context) {
         try {

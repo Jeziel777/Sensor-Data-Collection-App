@@ -125,11 +125,13 @@ fun PhoneFileCardList(uid: String) {
                                 if (mediaFile is PictureFile) {
                                     // For PictureFile, send the file directly
                                     val visualDistress = mediaFile.getVisualStress()
+                                    val gpsLocation = mediaFile.getGpsLocation()
                                     uploadPhotoWithProgress(
                                         context,
                                         filePath, // Sending the image file directly
                                         "https://140.203.17.132:443/report-distress",
                                         uid,
+                                        gpsLocation?:"",
                                         visualDistress?.name ?: ""
                                     ) { newProgress ->
                                         progressMap[filePath] = newProgress

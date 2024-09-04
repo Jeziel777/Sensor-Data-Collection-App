@@ -11,6 +11,7 @@ import androidx.camera.view.LifecycleCameraController
 import androidx.camera.view.video.AudioConfig
 import androidx.core.content.ContextCompat
 import android.content.Context
+import android.location.Location
 import android.widget.Toast
 import java.io.File
 import android.util.Log
@@ -19,12 +20,14 @@ import androidx.annotation.RequiresApi
 
 import com.example.pav_analytics.CSVWritter.saveSensorDataToCSV
 import com.example.pav_analytics.FileManager.MediaFileStorage
+import com.example.pav_analytics.FileManager.PictureFile
 import com.example.pav_analytics.FileManager.VideoFile
 import com.example.pav_analytics.FileManager.VisualDistress
 import com.example.pav_analytics.FileManager.getMediaStorageDirectory
 import com.example.pav_analytics.FileManager.saveBitmapToExternalStorage
 import com.example.pav_analytics.sensors.startSensors
 import com.example.pav_analytics.sensors.stopSensors
+import com.google.android.gms.location.LocationServices
 
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -46,6 +49,35 @@ fun takePhoto(
     capturedFileNameState: (String) -> Unit, // Pass the captured file name back to the Composable
     onVisualDistressSelected: (VisualDistress) -> Unit
 ) {
+    // Initialize FusedLocationProviderClient to get location
+    val fusedLocationClient = LocationServices.getFusedLocationProviderClient(applicationContext)
+
+    // Default GPS location to an empty string
+    var gpsLocation = ""
+
+    // Request location updates
+    fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+        if (location != null) {
+            // Get the latitude and longitude
+            gpsLocation = "${location.latitude},${location.longitude}"
+        } else {
+            Log.w("Location", "GPS location not available")
+        }
+    }.addOnFailureListener {
+        Log.e("Location", "Error getting location", it)
+    }.addOnCompleteListener {
+        // Always proceed to take the picture, whether or not the GPS was obtained
+        captureAndSavePhoto(applicationContext, controller, gpsLocation, capturedFileNameState, onVisualDistressSelected)
+    }
+}
+
+private fun captureAndSavePhoto(
+    applicationContext: Context,
+    controller: LifecycleCameraController,
+    gpsLocation: String,
+    capturedFileNameState: (String) -> Unit,
+    onVisualDistressSelected: (VisualDistress) -> Unit
+) {
     controller.takePicture(
         ContextCompat.getMainExecutor(applicationContext),
         object : OnImageCapturedCallback() {
@@ -64,8 +96,14 @@ fun takePhoto(
                         // Update the state in PhoneScreen with the captured file name
                         capturedFileNameState(fileName)
 
+                        // Create a PictureFile instance and set the GPS location
+                        val pictureFile = PictureFile(fileName, FileState.NOT_SENT, gpsLocation = gpsLocation)
+                        MediaFileStorage.addMediaFile(applicationContext, fileName, pictureFile)
+                        //Toast.makeText(applicationContext, "Photo saved with GPS: $gpsLocation", Toast.LENGTH_LONG).show()
+
                         // Trigger the callback to select visual distress
-                        onVisualDistressSelected.invoke(VisualDistress.OTHER)  // Example, replace with actual selection
+                        onVisualDistressSelected.invoke(VisualDistress.OTHER)
+
                     } else {
                         Toast.makeText(applicationContext, "Failed to save photo", Toast.LENGTH_LONG).show()
                     }

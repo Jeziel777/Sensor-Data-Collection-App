@@ -40,6 +40,7 @@ import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.viewinterop.AndroidView
 import com.example.pav_analytics.FileManager.MediaFileStorage
+import com.example.pav_analytics.FileManager.MediaFileStorage.getMediaFiles
 import com.example.pav_analytics.FileManager.PictureFile
 import com.example.pav_analytics.FileManager.VisualDistress
 
@@ -126,7 +127,8 @@ fun PhoneScreen(activity: ComponentActivity, uid: String) {
                 onDismiss = { showDialog = false },
                 onVisualDistressSelected = { selectedVisualDistress ->
                     capturedFileName?.let { fileName ->
-                        val pictureFile = PictureFile(fileName, FileState.NOT_SENT, selectedVisualDistress)
+                        val pictureFile = getMediaFiles(context)[fileName] as PictureFile
+                        pictureFile.setVisualStress(selectedVisualDistress)
                         MediaFileStorage.addMediaFile(context, fileName, pictureFile)
                         Toast.makeText(context, "Photo saved with visual distress as: $selectedVisualDistress", Toast.LENGTH_LONG).show()
                     }

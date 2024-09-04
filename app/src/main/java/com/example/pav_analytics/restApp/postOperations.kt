@@ -319,6 +319,7 @@ fun uploadPhotoWithProgress(
     context: Context,
     fileName: String,
     url: String,
+    gpsLocation: String,
     uid: String,
     visualDistress: String,
     onProgressUpdate: (Int) -> Unit) {
@@ -354,6 +355,7 @@ fun uploadPhotoWithProgress(
         .addFormDataPart("uid", uid)  // Add UID to the form data
         .addFormDataPart("type", visualDistress)  // Add additional text to the form data
         .addFormDataPart("comment", "")  // Add additional text to the form data
+        .addFormDataPart("location", gpsLocation)  // Add additional text to the form data
         .addFormDataPart("image", file.name, progressRequestBody)
         .build()
 
