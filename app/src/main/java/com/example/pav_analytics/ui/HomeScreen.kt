@@ -5,6 +5,7 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -57,6 +58,11 @@ import com.example.pav_analytics.ui.theme.greenPavAnalytics
 // HomeScreen menu
 @Composable
 fun HomeScreen(onLogout: () -> Unit, uid: String, navController: NavHostController) {
+
+    // Define colors for light and dark themes
+    val isDarkTheme = isSystemInDarkTheme()
+    val backgroundColor = if (isDarkTheme) Color.Gray else Color.LightGray
+
     val systemUiController = rememberSystemUiController()
     val statusBarColor = MaterialTheme.colorScheme.primary
     val context = LocalContext.current
@@ -69,7 +75,7 @@ fun HomeScreen(onLogout: () -> Unit, uid: String, navController: NavHostControll
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.LightGray) // Background color for the entire FileScreen
+            .background(backgroundColor) // Background color for the entire FileScreen
     ) {
         // Use the TitleCard composable at the very top without padding
         HomeTitleCard(
@@ -352,7 +358,6 @@ fun readCheckboxValuesFromStorage(): List<CheckboxItem> {
 @Preview
 @Composable
 fun HomePreview() {
-    val context = LocalContext.current
     val navController = rememberNavController()
     HomeScreen(onLogout = { /*TODO*/ }, uid = "123456789", navController = navController)
 }

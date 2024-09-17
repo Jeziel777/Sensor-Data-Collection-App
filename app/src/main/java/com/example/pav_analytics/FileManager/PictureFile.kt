@@ -1,6 +1,5 @@
 package com.example.pav_analytics.FileManager
 
-import com.example.pav_analytics.util.FileState
 
 class PictureFile(
     fileName: String,
@@ -29,13 +28,4 @@ class PictureFile(
         return gpsLocation
     }
 
-}
-
-enum class VisualDistress {
-    POTHOLE,
-    EDGE_CRACK,
-    LINEAR_CRACK,
-    DEBRIS,
-    INVADING_VEGETATION,
-    OTHER
 }

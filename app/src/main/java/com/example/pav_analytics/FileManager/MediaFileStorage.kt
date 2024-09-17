@@ -4,8 +4,6 @@ import android.content.Context
 import java.io.File
 import android.util.Log
 
-import com.example.pav_analytics.util.FileState
-
 object MediaFileStorage {
     private val mediaFiles = mutableMapOf<String, MediaFile>()
     private const val FILE_NAME = "media_files.txt"
@@ -32,7 +30,7 @@ object MediaFileStorage {
                 "PictureFile|${mediaFile.getFileName()}|${mediaFile.getFileState()}|$visualDistress|$gpsLocation"
             }
             is VideoFile -> {
-                "VideoFile|${mediaFile.getFileName()}|${mediaFile.getFileState()}"
+                "VideoFile|${mediaFile.getFileName()}|${mediaFile.getFileState()}|${mediaFile.getVideoDevice()}"
             }
             else -> ""
         }
@@ -46,13 +44,14 @@ object MediaFileStorage {
                 val fileName = parts[1]
                 val fileState = FileState.valueOf(parts[2])
                 val visualDistress = if (parts[3].isNotEmpty()) VisualDistress.valueOf(parts[3]) else null
-                val gpsLocation = if (parts[4].isNotEmpty()) parts[4] else null
+                val gpsLocation = parts[4]
                 PictureFile(fileName, fileState, visualDistress, gpsLocation)
             }
             "VideoFile" -> {
                 val fileName = parts[1]
                 val fileState = FileState.valueOf(parts[2])
-                VideoFile(fileName, fileState)
+                val videoDevice = VideoDevice.valueOf(parts[3])
+                VideoFile(fileName, fileState, videoDevice)
             }
             else -> null
         }
@@ -111,7 +110,7 @@ object MediaFileStorage {
         saveMediaFiles(context)
     }
 
-    private fun isPictureFile(fileName: String): Boolean {
+    fun isPictureFile(fileName: String): Boolean {
         val imageExtensions = arrayOf("jpg", "jpeg", "png", "gif", "bmp", "webp")
         val fileExtension = fileName.substringAfterLast('.', "").toLowerCase()
         return imageExtensions.contains(fileExtension)

@@ -84,7 +84,6 @@ class GPSSensor(
             location.altitude
         )
 
-
         sensorData.add(data)
         onSensorValueChanged?.invoke(
             listOf(

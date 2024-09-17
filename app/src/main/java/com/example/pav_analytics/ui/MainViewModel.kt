@@ -1,6 +1,7 @@
 package com.example.pav_analytics.ui
 
 import androidx.activity.ComponentActivity
+import androidx.activity.result.ActivityResultLauncher
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
@@ -80,22 +81,37 @@ fun BottomNavigationBar(navController: NavHostController) {
 
 // Navigation graph that defines all navigation routes in the app.
 @Composable
-fun NavigationGraph(navController: NavHostController, innerPadding: PaddingValues, activity: ComponentActivity, onLogout: () -> Unit, uid: String) {
+fun NavigationGraph(
+    navController: NavHostController,
+    innerPadding: PaddingValues,
+    activity: ComponentActivity,
+    onLogout: () -> Unit,
+    uid: String,
+    selectMediaLauncher: ActivityResultLauncher<Array<String>>
+    ) {
     NavHost(navController, startDestination = Screen.Home.route, Modifier.padding(innerPadding)) {
         composable(Screen.Home.route) { HomeScreen(onLogout, uid, navController) }
         composable(Screen.Phone.route) { PhoneScreen(activity = activity, uid) }
         composable(Screen.GoPro.route) { GoProScreen(uid) }
-        composable(Screen.File.route) { FileScreen(uid) }
+        composable(Screen.File.route) { FileScreen(uid, selectMediaLauncher) }
     }
 }
 
 @Composable
-fun NavigationGraph(navController: NavHostController, innerPadding: PaddingValues, activity: ComponentActivity?, startDestination: String, onLogout: () -> Unit, uid: String) {
+fun NavigationGraph(
+    navController: NavHostController,
+    innerPadding: PaddingValues,
+    activity: ComponentActivity?,
+    startDestination: String,
+    onLogout: () -> Unit,
+    uid: String,
+    selectMediaLauncher: ActivityResultLauncher<Array<String>>
+) {
     NavHost(navController, startDestination = startDestination, Modifier.padding(innerPadding)) {
         composable(Screen.Home.route) { HomeScreen(onLogout, uid, navController) }
         composable(Screen.Phone.route) { PhoneScreen(activity = activity!!, uid) }
         composable(Screen.GoPro.route) { GoProScreen(uid) }
-        composable(Screen.File.route) { FileScreen(uid) }
+        composable(Screen.File.route) { FileScreen(uid, selectMediaLauncher) }
     }
 }
 

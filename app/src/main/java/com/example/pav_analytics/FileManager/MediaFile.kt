@@ -1,6 +1,5 @@
 package com.example.pav_analytics.FileManager
 
-import com.example.pav_analytics.util.FileState
 
 abstract class MediaFile (
     private var fileName: String,

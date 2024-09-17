@@ -1,6 +1,7 @@
 package com.example.pav_analytics.ui
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.camera.view.CameraController
@@ -39,6 +40,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.viewinterop.AndroidView
+
+import com.example.pav_analytics.FileManager.FileState
 import com.example.pav_analytics.FileManager.MediaFileStorage
 import com.example.pav_analytics.FileManager.MediaFileStorage.getMediaFiles
 import com.example.pav_analytics.FileManager.PictureFile
@@ -51,9 +54,11 @@ import com.example.pav_analytics.sensors.MeasurableSensor
 import com.example.pav_analytics.sensors.accelerometerSensor
 import com.example.pav_analytics.sensors.gpsSensor
 import com.example.pav_analytics.sensors.gyroSensor
-import com.example.pav_analytics.util.FileState
+
 import com.example.pav_analytics.util.recordVideo
 import com.example.pav_analytics.util.takePhoto
+
+
 
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.ticker
@@ -109,13 +114,14 @@ fun PhoneScreen(activity: ComponentActivity, uid: String) {
                     context,
                     controller = controller,
                     capturedFileNameState = { capturedFileName = it }, // Pass lambda to set capturedFileName
-                    onVisualDistressSelected = { visualDistress ->
+                    onVisualDistressSelected = { /*visualDistress ->
                         capturedFileName?.let { fileName ->
-                            val pictureFile = PictureFile(fileName, FileState.NOT_SENT, visualDistress)
+                            val pictureFile = getMediaFiles(context)[fileName] as PictureFile
+                            pictureFile.setVisualStress(visualDistress)
                             MediaFileStorage.addMediaFile(context, fileName, pictureFile)
                             Toast.makeText(context, "Photo saved", Toast.LENGTH_LONG).show()
                         }
-                    }
+                    */}
                 )
                 showDialog = true
             },
@@ -130,7 +136,8 @@ fun PhoneScreen(activity: ComponentActivity, uid: String) {
                         val pictureFile = getMediaFiles(context)[fileName] as PictureFile
                         pictureFile.setVisualStress(selectedVisualDistress)
                         MediaFileStorage.addMediaFile(context, fileName, pictureFile)
-                        Toast.makeText(context, "Photo saved with visual distress as: $selectedVisualDistress", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context,
+                            "Photo saved with visual distress as: $selectedVisualDistress", Toast.LENGTH_LONG).show()
                     }
                     showDialog = false
                 }

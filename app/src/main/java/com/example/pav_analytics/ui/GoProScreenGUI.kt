@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -31,16 +32,19 @@ import kotlinx.coroutines.withContext
 
 import com.example.pav_analytics.AppContainer
 import com.example.pav_analytics.AppContainerImpl
+import com.example.pav_analytics.FileManager.FileState
 import com.example.pav_analytics.FileManager.MediaFileStorage
 import com.example.pav_analytics.FileManager.MediaFileStorage.loadMediaFiles
 import com.example.pav_analytics.FileManager.PictureFile
+import com.example.pav_analytics.FileManager.VideoDevice
 import com.example.pav_analytics.FileManager.VideoFile
+import com.example.pav_analytics.FileManager.VisualDistress
 import com.example.pav_analytics.FileManager.isImageFile
 import com.example.pav_analytics.GoPro.GoProMediaList
 import com.example.pav_analytics.GoPro.ConnectBLE
 import com.example.pav_analytics.GoPro.ConnectWiFi
 import com.example.pav_analytics.ui.components.TitleCard
-import com.example.pav_analytics.util.FileState
+
 
 @OptIn(InternalAPI::class)
 @Composable
@@ -50,6 +54,11 @@ fun GoProScreen(uid: String) {
     val context = LocalContext.current
     val appContainer = remember { AppContainerImpl(context) }
 
+    val isDarkTheme = isSystemInDarkTheme()
+    // Define colors for light and dark themes
+    val backgroundColor = if (isDarkTheme) Color.Gray else Color.LightGray
+    val textColor = if (isDarkTheme) Color.Gray else Color.White
+
     // Set the status bar color
     LaunchedEffect(statusBarColor) {
         systemUiController.setStatusBarColor(color = statusBarColor)
@@ -58,12 +67,13 @@ fun GoProScreen(uid: String) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.LightGray) // Background color for the entire FileScreen
+            .background(backgroundColor) // Background color for the entire FileScreen
     ) {
         // Use the TitleCard composable at the very top without padding
         TitleCard(
             title = "GoPro Controls",
-            backgroundColor = statusBarColor
+            backgroundColor = statusBarColor,
+            textColor = textColor
         )
         // Add the rest of the content with padding
         Column(
@@ -213,9 +223,9 @@ fun GoProMediaCardList(appContainer: AppContainer) {
                                 //if download
                                 if (goProMediaFile != null && filePath !in mediaSavedInDevice.keys) {
                                     val mediaFile = if (isImageFile(filePath)) {
-                                        PictureFile(filePath, FileState.NOT_SENT)
+                                        PictureFile(filePath, FileState.NOT_SENT, VisualDistress.OTHER)
                                     } else {
-                                        VideoFile(filePath, FileState.NOT_SENT)
+                                        VideoFile(filePath, FileState.NOT_SENT, VideoDevice.GOPRO)
                                     }
                                     MediaFileStorage.addMediaFile(context, filePath, mediaFile)
                                     Toast.makeText(
