@@ -249,7 +249,7 @@ fun extractCurrentTimeOfVideo(fileName: String): String? {
 }
 
 
-fun createZipFolder(fileName: String): String {
+fun createZipFolderName(fileName: String): String {
     val currentTimeOfVideo = extractCurrentTimeOfVideo(fileName)
     val newZipFile = "zip_${currentTimeOfVideo}.zip"
     return newZipFile
