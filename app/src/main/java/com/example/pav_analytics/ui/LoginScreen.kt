@@ -2,6 +2,7 @@ package com.example.pav_analytics.ui
 
 import android.content.Context
 import android.widget.Toast
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
@@ -9,6 +10,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
@@ -19,11 +22,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.pav_analytics.R
 import kotlinx.coroutines.launch
 
 import com.example.pav_analytics.navigation.AllScreen
@@ -61,8 +68,13 @@ fun LoginScreen(auth: AuthManager, onLoginSuccess: () -> Unit) {
         color = backgroundColor
     ) {
         Column(modifier = Modifier.fillMaxSize()) {
-
-            Spacer(modifier = Modifier.height(20.dp))
+            Image(
+                painter = painterResource(id = R.drawable.logo_no_back),
+                contentDescription = null, // You can provide a description here if needed
+                modifier = Modifier
+                    .size(200.dp) // Adjust size as needed
+                    .align(Alignment.CenterHorizontally)
+            )
             NormalTextComponent(value = "Hey, there", color = contentColor)
             HeadingTextComponent(value = "Welcome Back", color = contentColor)
             Spacer(modifier = Modifier.height(20.dp))

@@ -26,7 +26,7 @@ class AccelerometerSensor (
     @SuppressLint("DefaultLocale")
     override fun handleSensorData(values: FloatArray, currentTimeMillis: Long, nanoTime: Long) {
         val formattedTimestamp = formatTimestamp(currentTimeMillis, nanoTime)
-        val data = "ACL,${values[0]},${values[1]},${values[2]},${formattedTimestamp}"
+        val data = "ACL,${values[1]},${values[0]},${values[2]},${formattedTimestamp}"
         // Store the latest sensor data
         val x = String.format("%.3f", values[0])
         val y = String.format("%.3f", values[1])
@@ -49,7 +49,7 @@ class GyroSensor(
     @SuppressLint("DefaultLocale")
     override fun handleSensorData(values: FloatArray, currentTimeMillis: Long, nanoTime: Long) {
         val formattedTimestamp = formatTimestamp(currentTimeMillis, nanoTime)
-        val data = "GRO,${values[0]},${values[1]},${values[2]},${formattedTimestamp}"
+        val data = "GRO,${values[1]},${values[0]},${values[2]},${formattedTimestamp}"
         // Store the latest sensor data
         val x = String.format("%.3f", values[0])
         val y = String.format("%.3f", values[1])
