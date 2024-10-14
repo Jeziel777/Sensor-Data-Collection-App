@@ -5,18 +5,26 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
     id("com.google.gms.google-services")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
+apply(plugin = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+
+secrets {
+    propertiesFileName = "secret.properties" // Explicitly point to the file
+}
+
+
 android {
-    namespace = "com.example.pav_analytics"
+    namespace = "com.pav_analytics"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.pav_analytics"
+        applicationId = "com.pav_analytics"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1"
         multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -47,10 +55,10 @@ android {
 
 dependencies {
 
-    implementation (libs.androidx.compose.ui.ui4)
-    implementation (libs.androidx.compose.ui.ui.tooling.preview)
-    implementation (libs.androidx.lifecycle.runtime.ktx.v260)
-    implementation (libs.androidx.activity.compose.v172)
+    implementation(libs.androidx.compose.ui.ui4)
+    implementation(libs.androidx.compose.ui.ui.tooling.preview)
+    implementation(libs.androidx.lifecycle.runtime.ktx.v260)
+    implementation(libs.androidx.activity.compose.v172)
     implementation(libs.androidx.ui.tooling)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -58,6 +66,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.exifinterface)
+    implementation(libs.androidx.monitor)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -105,28 +114,35 @@ dependencies {
     implementation(libs.isoparser)
 
     //Library to merge colors
-    implementation (libs.accompanist.systemuicontroller)
+    implementation(libs.accompanist.systemuicontroller)
+    implementation(libs.accompanist.swiperefresh.v0265rc)
 
-    implementation (libs.gson)
+
+    implementation(libs.gson)
 
     //val cameraxVersion = "1.1.0-beta01"
-    implementation (libs.androidx.camera.core.v110beta01)
-    implementation (libs.androidx.camera.camera2.v110beta01)
-    implementation (libs.androidx.camera.lifecycle.v110beta01)
-    implementation (libs.androidx.camera.video.v110beta01)
-    implementation (libs.androidx.camera.view.v110beta01)
-    implementation (libs.androidx.camera.extensions.v110beta01)
+    implementation(libs.androidx.camera.core.v110beta01)
+    implementation(libs.androidx.camera.camera2.v110beta01)
+    implementation(libs.androidx.camera.lifecycle.v110beta01)
+    implementation(libs.androidx.camera.video.v110beta01)
+    implementation(libs.androidx.camera.view.v110beta01)
+    implementation(libs.androidx.camera.extensions.v110beta01)
 
     implementation(libs.androidx.camera.view)
     implementation(libs.androidx.camera.extensions)
 
     //firebase libraries
     implementation(platform(libs.firebase.bom))
-    implementation (libs.firebase.auth)
-    implementation (libs.firebase.firestore)
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
     implementation(libs.firebase.analytics)
     implementation(libs.multidex)
 
-    implementation(libs.play.services.location)
+    //Libraries to map implementation
+    implementation (libs.play.services.location)
+    implementation (libs.play.services.maps)
+    implementation (libs.maps.compose)
+    implementation (libs.maps.compose.utils)
+    implementation (libs.maps.compose.widgets)
 }
 
