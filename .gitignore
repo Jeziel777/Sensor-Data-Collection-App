@@ -24,3 +24,7 @@ app/release/
 # Keystores (never commit these!)
 *.jks
 *.keystore
+
+
+#files to ignore:
+secret.properties
