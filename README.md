@@ -1,8 +1,6 @@
 # PavAnalytics Data Collection App
 
-**PavAnalytics** is an Android application designed to collect data on pavement surfaces for cycling route assessment.  
-It gathers information from accelerometers, GPS, gyroscope, and camera sensors.  
-The collected data is saved locally and can be uploaded to a server for further processing using data analysis, image processing, and AI techniques.
+**PavAnalytics Data collection App** is a data collection application designed to collect data on the pavement surface of cycling routes for pavement assessment, collecting information from accelerometers, GPS, gyroscope, and camera. This information is saved and sent to a server for further processing, where the data is used to assess the condition of the cycling routes through data analysis, image processing, and AI.
 
 ## Features
 
@@ -55,4 +53,19 @@ The collected data is saved locally and can be uploaded to a server for further 
 ## Installation
 
 1. Download the PavAnalytics installer from the official source.
-2. Run the installer
+2. Run the installer and follow the on-screen instructions.
+3. Once installed, open the app and start collecting pavement data.
+
+## Usage
+
+1. **Home Menu**: Start at the home screen and navigate to Camera, GoPro, or File menus.
+2. **Capture Media**: Use the camera or GoPro options to record video and collect sensor data.
+3. **View Files**: Open the File Menu to review stored media.
+4. **Upload Media**: Send files to your server for storage or analysis.
+5. **Import Files**: Import external files for organization and upload.
+
+## System Requirements
+
+- **Operating System**: Android  
+- **Storage**: Sufficient free space for managing and uploading media files.  
+- **Network**: Active internet connection required for server uploads.
