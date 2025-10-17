@@ -5,11 +5,14 @@
 
 ## Features
 
+### 0. **Sesion Management**
+
+![Accoutn Creation](https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/login_1.jpg)
+![Login](https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/login_3.jpg)
 ### 1. **Home Menu**
 - The starting point for users when they open the app.
 - Provides quick access to all features, including camera, GoPro integration, file management, and upload functions.
 
-  
 
 ### 2. **Camera Menu**
 - Capture video and sesnor readings, as well allow to make image reports.
