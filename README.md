@@ -12,11 +12,11 @@
   
 
 ### 2. **Camera Menu**
-- Capture high-quality images and videos directly within the app.
+- Capture video and sesnor readings, as well allow to make image reports.
 - All media is stored within the app for easy access and management.
 
 ### 3. **GoPro Menu**
-- Integrate with GoPro devices to control and manage media capture remotely.
+- Integrate with GoPro devices to control and manage media captured using a GoPro.
 - Transfer videos and images from your GoPro to the app for further processing or upload.
 
 ### 4. **File Menu**
@@ -26,9 +26,6 @@
   - Send media files to a connected server for analysis or storage.
   - Import external media files for further management and upload.
 
-### 5. **File Upload**
-- Upload media files, whether captured within the app or imported, to a server for storage and analysis.
-- Supports batch uploads for efficient data transfer.
 
 ## Installation
 
@@ -50,11 +47,4 @@
 - Storage: Requires sufficient storage for managing and uploading media files.
 - Network: An active internet connection is required for server uploads.
 
-## Support
-
-For any questions or support, feel free to reach out at [Support Email] or visit our [Website/Documentation].
-
-## License
-
-PavAnalytics is licensed under [License Name]. See the [LICENSE] file for more details.
 
