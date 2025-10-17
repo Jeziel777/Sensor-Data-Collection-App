@@ -1,15 +1,15 @@
 
-# PavAnalytics
+# PavAnalytics Data Collection App
 
-**PavAnalytics** is a data collection application designed to make it easy to manage and share media files such 
-as photos and videos. With an intuitive interface, users can capture media using in-app tools or import existing 
-files for seamless organization and upload to a server.
+**PavAnalytics** is a data collection application designed to collect data of the pavement surface of cylcing rotus for pavement assesment, recollecting information from accelerometers, GPS, gyro and Camera. This information is saved and sent to server for further procesing where the data is utilized for analysis of the the condition of the using data analysis, image precsing and AI.
 
 ## Features
 
 ### 1. **Home Menu**
 - The starting point for users when they open the app.
 - Provides quick access to all features, including camera, GoPro integration, file management, and upload functions.
+
+  
 
 ### 2. **Camera Menu**
 - Capture high-quality images and videos directly within the app.
