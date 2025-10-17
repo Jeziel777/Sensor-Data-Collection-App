@@ -1,7 +1,7 @@
 
 # PavAnalytics Data Collection App
 
-**PavAnalytics** is a data collection application designed to collect data of the pavement surface of cylcing rotus for pavement assesment, recollecting information from accelerometers, GPS, gyro and Camera. This information is saved and sent to server for further procesing where the data is utilized for analysis of the the condition of the using data analysis, image precsing and AI.
+**PavAnalytics** is a data collection application designed to collect data of the pavement surface of cylcing rotus for pavement assesment, recollecting information from accelerometers, GPS, gyro and Camera. This information is saved and sent to server for further procesing where the data is utilized for asses the condition of the cycling routes of the using data analysis, image precsing and AI.
 
 ## Features
 
