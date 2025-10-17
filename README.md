@@ -6,9 +6,10 @@
 ## Features
 
 ### 0. **Sesion Management**
+- The first time the user acces to the app has the oportunity of creating an account or to access as a guess.
+- The session management was built with Firebase.
 <img src="https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/login_1.jpg" width="400"/>
-
-![Login](https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/login_3.jpg)
+<img src="https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/login_3.jpg" width="400"/>
 ### 1. **Home Menu**
 - The starting point for users when they open the app.
 - Provides quick access to all features, including camera, GoPro integration, file management, and upload functions.
