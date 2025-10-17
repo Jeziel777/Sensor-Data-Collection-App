@@ -8,16 +8,20 @@
 ### 0. **Sesion Management**
 - The first time the user acces to the app has the oportunity of creating an account or to access as a guess.
 - The session management was built with Firebase.
-<img src="https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/login_1.jpg" width="400"/>
-<img src="https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/login_3.jpg" width="400"/>
+
+<img src="https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/session_menu.png" width="500"/>
+
 ### 1. **Home Menu**
 - The starting point for users when they open the app.
 - Provides quick access to all features, including camera, GoPro integration, file management, and upload functions.
 
+<img src="https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/home_menu.jpg" width="200"/>
 
 ### 2. **Camera Menu**
 - Capture video and sesnor readings, as well allow to make image reports.
 - All media is stored within the app for easy access and management.
+
+<img src="https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/recording_menu.jpg" width="200"/>
 
 ### 3. **GoPro Menu**
 - Integrate with GoPro devices to control and manage media captured using a GoPro.
@@ -30,6 +34,7 @@
   - Send media files to a connected server for analysis or storage.
   - Import external media files for further management and upload.
 
+<img src="https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/File_menu.jpg" width="200"/>
 
 ## Installation
 
