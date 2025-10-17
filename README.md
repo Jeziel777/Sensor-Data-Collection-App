@@ -1,59 +1,58 @@
-
 # PavAnalytics Data Collection App
 
-**PavAnalytics** is a data collection application designed to collect data of the pavement surface of cylcing rotus for pavement assesment, recollecting information from accelerometers, GPS, gyro and Camera. This information is saved and sent to server for further procesing where the data is utilized for asses the condition of the cycling routes of the using data analysis, image precsing and AI.
+**PavAnalytics** is an Android application designed to collect data on pavement surfaces for cycling route assessment.  
+It gathers information from accelerometers, GPS, gyroscope, and camera sensors.  
+The collected data is saved locally and can be uploaded to a server for further processing using data analysis, image processing, and AI techniques.
 
 ## Features
 
-### 0. **Sesion Management**
-- The first time the user acces to the app has the oportunity of creating an account or to access as a guess.
-- The session management was built with Firebase.
+### 0. **Session Management**
+- On first use, users can create an account or access the app as a guest.
+- Session management is built with Firebase.
 
-<img src="https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/session_menu.png" width="500"/>
+<p align="center">
+  <img src="https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/session_menu.png" width="450"/>
+</p>
 
 ### 1. **Home Menu**
 - The starting point for users when they open the app.
-- Provides quick access to all features, including camera, GoPro integration, file management, and upload functions.
+- Provides quick access to all features, including:
+  - Camera
+  - GoPro integration
+  - File management
+  - Upload functions
 
-<img src="https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/home_menu.jpg" width="200"/>
+<p align="center">
+  <img src="https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/home_menu.jpg" width="200"/>
+</p>
 
 ### 2. **Camera Menu**
-- Capture video and sesnor readings, as well allow to make image reports.
+- Capture video and sensor readings.  
+- Allows users to create image-based reports.  
 - All media is stored within the app for easy access and management.
 
-<img src="https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/recording_menu.jpg" width="200"/>
+<p align="center">
+  <img src="https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/recording_menu.jpg" width="200"/>
+</p>
 
 ### 3. **GoPro Menu**
-- Integrate with GoPro devices to control and manage media captured using a GoPro.
-- Transfer videos and images from your GoPro to the app for further processing or upload.
+- Integrates with GoPro devices to control and manage media.  
+- Transfer videos and images from GoPro to the app for further processing or upload.
 
 ### 4. **File Menu**
-- View all photos and videos captured within the app or imported from external sources.
-- Files are organized for easy viewing, sorting, and management.
-- Allows users to:
-  - Send media files to a connected server for analysis or storage.
-  - Import external media files for further management and upload.
+- View all photos and videos captured within the app or imported from external sources.  
+- Organized for easy viewing, sorting, and management.  
+- Features:
+  - Upload media files to a connected server.
+  - Import external files for management and upload.
 
-<img src="https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/File_menu.jpg" width="200"/>
+<p align="center">
+  <img src="https://github.com/Jeziel777/Sensor-Data-Collection-App/blob/main/Images/File_menu.jpg" width="200"/>
+</p>
+
+---
 
 ## Installation
 
 1. Download the PavAnalytics installer from the official source.
-2. Run the installer and follow the on-screen instructions.
-3. Once installed, open the app and start using the data collection tools.
-
-## Usage
-
-1. **Home Menu**: Start at the home screen and navigate to any of the main functionalities (Camera, GoPro, or File menus).
-2. **Capture Media**: Use the camera or GoPro options to capture photos and videos.
-3. **View Files**: Open the File Menu to review all media stored in the app.
-4. **Upload Media**: Select files from the File Menu and send them to your server for storage or analysis. You can also import files and upload them directly.
-5. **Import Files**: Add external files by importing them to the app for further organization and upload.
-
-## System Requirements
-
-- Operating System: [Include supported OS versions]
-- Storage: Requires sufficient storage for managing and uploading media files.
-- Network: An active internet connection is required for server uploads.
-
-
+2. Run the installer
